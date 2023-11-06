@@ -24,7 +24,7 @@ def define_geometry(geometry, show_geometry=True):
         dgam3 = lambda xi: ey * 1
         gam4 = lambda eta: np.array([np.cos(np.pi * (eta + 1) / 4) * ex_i + np.sin(np.pi * (eta + 1) / 4) * ey_i for ex_i, ey_i in zip(ex, ey)])
         dgam4 = lambda eta: np.array([(np.pi / 4) * (-1) * np.sin(np.pi * (eta + 1) / 4) * ex_i + (np.pi / 4) * np.cos(np.pi * (eta + 1) / 4) * ey_i for ex_i, ey_i in zip(ex, ey)])
-    elif geometry == 'M ':
+    elif geometry == 'M':
         gam1 = lambda xi: np.array([ex_i * (3 * xi * 0.5) - ey_i * (0.3 + 0.45 * (np.tanh(2 * xi) + 1)) for ex_i, ey_i in zip(ex, ey)])
         dgam1 = lambda xi: np.array([ex_i * (xi * 0 + 1.5) - ey_i * (0.3 + 0.45 * (2 * np.cosh(2 * xi) ** (-2))) for ex_i, ey_i in zip(ex, ey)])
         gam2 = lambda eta: np.array([ex_i * (eta * 0 + 1.5) + ey_i * (eta * (0.3 + 0.45 * (np.tanh(2) + 1))) for ex_i, ey_i in zip(ex, ey)])
@@ -134,6 +134,8 @@ def define_geometry(geometry, show_geometry=True):
         # gam4 = lambda eta: ex * (eta * 0 - 3 / 2) + ey * (eta * (0.4 + 0.4 * (np.tanh(-4) + 1)))
 
         plt.figure()
+        plt.title(f'Geometry {geometry}')
+        
         tmp = gam1(xi)
         plt.plot(tmp[0, :], tmp[1, :], 'k')
         tmp = gam2(eta)

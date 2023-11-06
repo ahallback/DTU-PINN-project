@@ -5,8 +5,8 @@ def TransfiniteQuadMap(xi, eta, gam1, gam2, gam3, gam4):
     x = np.zeros_like(xi)
     y = np.zeros_like(eta)
     
-    xi = xi.flatten()
-    eta = eta.flatten()
+    xi = np.copy(xi)
+    eta = np.copy(eta)
     
     # Vertice coordinates of quadrilateral
     tmp = gam1(-1)

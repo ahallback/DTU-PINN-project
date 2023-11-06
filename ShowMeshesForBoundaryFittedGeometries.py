@@ -3,19 +3,20 @@ import matplotlib.pyplot as plt
 from TransfiniteQuadMap import TransfiniteQuadMap
 from DefineBoundaryFittedGeometries import define_geometry
 from printme import printme
+from LegendreGaussLobattoNodesAndWeights import LegendreGaussLobattoNodesAndWeights
 
 def show_mesh_for_boundary_fitted_geometries(geometry, print_on_off=False):
     # Set print_on_off to 0 (printOFF)
 
     # Define the directory
-    dir = 'C:\\Users\\ahal\\DTU Kurser\\Deep Learning\\PINN Projekt\\figures\\'
+    # dir = 'C:\\Users\\ahal\\DTU Kurser\\Deep Learning\\PINN Projekt\\figures\\'
 
     # PARAMETERS
     M = 28  # xi
     N = M  # eta
 
     # COMPUTATIONAL GRID
-    xi = np.linspace(-1, 1, M)
+    xi, _ = LegendreGaussLobattoNodesAndWeights(M-1)
     eta = np.copy(xi)
     XI, ETA = np.meshgrid(xi, eta)
 
@@ -52,5 +53,5 @@ def show_mesh_for_boundary_fitted_geometries(geometry, print_on_off=False):
     plt.axis([xmin - fac * Lx, xmax + fac * Lx, ymin - fac * Ly, ymax + fac * Ly])
     plt.show()
 
-    filename = 'MeshGeometry' + geometry + '.eps'
-    printme(plt.gcf(), dir, filename, print_on_off)
+    # filename = 'MeshGeometry' + geometry + '.eps'
+    # printme(plt.gcf(), dir, filename, print_on_off)
