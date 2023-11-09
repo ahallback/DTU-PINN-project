@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def define_geometry(geometry, show_geometry=True):
+def define_geometry(geometry, show_geometry=False):
     ex = np.array([1, 0])
     ey = np.array([0, 1])
     
