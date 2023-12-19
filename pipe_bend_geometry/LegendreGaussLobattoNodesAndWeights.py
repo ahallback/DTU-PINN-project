@@ -1,5 +1,5 @@
 import numpy as np
-from qAndLEvalutation import qAndLEvalutation
+from pipe_bend_geometry.qAndLEvalutation import qAndLEvalutation
 
 def LegendreGaussLobattoNodesAndWeights(N):
     x = np.zeros(N + 1)

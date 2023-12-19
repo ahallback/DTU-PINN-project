@@ -2,15 +2,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def define_geometry(geometry, show_geometry=False):
+def define_geometry(geometry, radius, show_geometry=False):
     ex = np.array([1, 0])
     ey = np.array([0, 1])
+    r = radius
     
     if geometry == 'M1':
         gam1 = lambda xi: np.array([ex_i * (xi + 2) for ex_i in ex])
         dgam1 = lambda xi: ex * 1
-        gam2 = lambda eta: np.array([3 * np.cos(np.pi * (eta + 1) / 4) * ex_i for ex_i in ex]) + np.array([3 * np.sin(np.pi * (eta + 1) / 4) * ey_i for ey_i in ey])
-        dgam2 = lambda eta: np.array([(3 * np.pi / 4) * (-1) * np.sin(np.pi * (eta + 1) / 4) * ex_i for ex_i in ex]) + np.array([(3 * np.pi / 4) * np.cos(np.pi * (eta + 1) / 4) * ey_i for ey_i in ey])
+        gam2 = lambda eta: np.array([r * np.cos(np.pi * (eta + 1) / 4) * ex_i for ex_i in ex]) + np.array([r * np.sin(np.pi * (eta + 1) / 4) * ey_i for ey_i in ey])
+        dgam2 = lambda eta: np.array([(r * np.pi / 4) * (-1) * np.sin(np.pi * (eta + 1) / 4) * ex_i for ex_i in ex]) + np.array([(r * np.pi / 4) * np.cos(np.pi * (eta + 1) / 4) * ey_i for ey_i in ey])
         gam3 = lambda xi: np.array([ey_i * (xi + 2) for ey_i in ey])
         dgam3 = lambda xi: ey * 1
         gam4 = lambda eta: np.array([np.cos(np.pi * (eta + 1) / 4) * ex_i for ex_i in ex]) + np.array([np.sin(np.pi * (eta + 1) / 4) * ey_i for ey_i in ey])

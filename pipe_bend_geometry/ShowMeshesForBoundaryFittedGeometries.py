@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from TransfiniteQuadMap import TransfiniteQuadMap
-from DefineBoundaryFittedGeometries import define_geometry
-from printme import printme
-from LegendreGaussLobattoNodesAndWeights import LegendreGaussLobattoNodesAndWeights
+from pipe_bend_geometry.TransfiniteQuadMap import TransfiniteQuadMap
+from pipe_bend_geometry.DefineBoundaryFittedGeometries import define_geometry
+from pipe_bend_geometry.printme import printme
+from pipe_bend_geometry.LegendreGaussLobattoNodesAndWeights import LegendreGaussLobattoNodesAndWeights
 
-def show_mesh_for_boundary_fitted_geometries(geometry, print_on_off=False, plot=False):
+def show_mesh_for_boundary_fitted_geometries(geometry, radius = 3, print_on_off=False, plot=False):
     # Set print_on_off to 0 (printOFF)
 
     # Define the directory
@@ -14,6 +14,7 @@ def show_mesh_for_boundary_fitted_geometries(geometry, print_on_off=False, plot=
     # PARAMETERS
     M = 28  # xi
     N = M  # eta
+    r = radius
 
     # COMPUTATIONAL GRID
     xi, _ = LegendreGaussLobattoNodesAndWeights(M-1)
@@ -21,7 +22,7 @@ def show_mesh_for_boundary_fitted_geometries(geometry, print_on_off=False, plot=
     XI, ETA = np.meshgrid(xi, eta)
 
     # GEOMETRY
-    gam1, _, gam2, _,  gam3, _, gam4, _ = define_geometry(geometry, show_geometry=plot)
+    gam1, _, gam2, _,  gam3, _, gam4, _ = define_geometry(geometry, r, show_geometry=plot)
 
     # SETUP PHYSICAL GRID
     # Assuming you have already defined gam1, gam2, gam3, gam4
